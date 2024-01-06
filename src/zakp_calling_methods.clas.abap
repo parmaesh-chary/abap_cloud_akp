@@ -23,8 +23,9 @@ CLASS zakp_calling_methods IMPLEMENTATION.
         "* Call Method and Handle Exception
     out->write( |i_carrier_id = '{ c_carrier_id }' | ).
     out->write( |i_connection_id = '{ c_connection_id }'| ).
+
     TRY.
-        connection->set_attributes( EXPORTING i_carrier_id = c_carrier_id i_connection_id = TEMP ).
+        connection->set_attributes( EXPORTING i_carrier_id = c_carrier_id i_connection_id = c_connection_id ).
         APPEND connection TO connections.
         out->write( `Method call successful` ).
     CATCH cx_abap_invalid_value.
