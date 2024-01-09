@@ -40,11 +40,33 @@ CLASS zakp_table_comprehension IMPLEMENTATION.
 * copying the values of line-carrier_Id, line-connection_Id and line-airport_from_id, then
 * loooking up the airport name in the internal table airports using a table expression
 
-    it_final = VALUE #( for line in it_connection (
+*    it_final = VALUE #( for line in it_connection (
+*                      carrier_id = line-carrier_id
+*                      connection_id = line-connection_id
+*                      departure_airport = line-airport_from_id
+*                      departure_airport_name =
+*                      it_airports[ airport_id = line-airport_from_id ]-name )
+*                      ).
+
+*We can also keep where condition on internal table
+* it_final = VALUE #( for line in it_connection WHERE ( carrier_id = 'SQ' )
+*                    (
+*                      carrier_id = line-carrier_id
+*                      connection_id = line-connection_id
+*                      departure_airport = line-airport_from_id
+*                      departure_airport_name =
+*                      it_airports[ airport_id = line-airport_from_id ]-name )
+*                      ).
+
+*We can also iterate the for loop by providing the from to index
+it_final = VALUE #( for line in it_connection from 1 to 10
+                    (
                       carrier_id = line-carrier_id
                       connection_id = line-connection_id
                       departure_airport = line-airport_from_id
-                      departure_airport_name = it_airports[ airport_id = line-airport_from_id ]-name ) ).
+                      departure_airport_name =
+                      it_airports[ airport_id = line-airport_from_id ]-name )
+                      ).
 
         out->write(
       EXPORTING
