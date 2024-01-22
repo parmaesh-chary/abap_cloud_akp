@@ -20,7 +20,7 @@ CLASS zakp_itab_modify IMPLEMENTATION.
             airport_to_id TYPE /dmo/airport_to_id,
             carrier_name TYPE /dmo/carrier_name,
             END OF st_connection.
-    TYPES tt_connections TYPE SORTED TABLE OF st_connection WITH NON-UNIQUE KEY carrier_id connection_id.
+    TYPES tt_connections TYPE SORTED TABLE OF st_connection WITH NON-UNIQUE KEY carrier_id connection_id." WITH UNIQUE key carrier_id connection_id." WITH NON-UNIQUE KEY carrier_id connection_id.
     DATA connections TYPE tt_connections.
     DATA connection LIKE LINE OF connections.
     TYPES: BEGIN OF st_carrier,
@@ -32,6 +32,7 @@ CLASS zakp_itab_modify IMPLEMENTATION.
 
 * Preparation: Fill internal tables with data **********************************************************************
 connections = VALUE #( ( carrier_id = 'JL' connection_id = '0408' airport_from_id = 'FRA' airport_to_id = 'NRT' carrier_name = 'Japan Airlines' )
+                        ( carrier_id = 'JL' connection_id = '0408' airport_from_id = 'FRA' airport_to_id = 'NRT' carrier_name = 'Japan Airlines' )
                         ( carrier_id = 'AA' connection_id = '0017' airport_from_id = 'MIA' airport_to_id = 'HAV' carrier_name = 'American Airlines' )
                         ( carrier_id = 'SQ' connection_id = '0001' airport_from_id = 'SFO' airport_to_id = 'SIN' carrier_name = 'Singapore Airlines' )
                         ( carrier_id = 'UA' connection_id = '0078' airport_from_id = 'SFO' airport_to_id = 'SIN' carrier_name = 'United Airlines' ) ).

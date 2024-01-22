@@ -31,8 +31,8 @@ DATA numbers TYPE TABLE OF i.
 DATA connections TYPE TABLE OF st_connection.
 out->write( `--------------------------------------------` ).
 out->write( `Example 1: Simple and Complex Internal Table` ).
-out->write( data = numbers name = `Simple Table NUMBERS:`).
-out->write( data = connections name = `Complex Table CONNECTIONS:`).
+out->write( data = numbers name = `Simple Table NUMBERS:` ).
+out->write( data = connections name = `Complex Table CONNECTIONS:` ).
 
 
 * Example 2 : Complex Internal Tables **********************************************************************
