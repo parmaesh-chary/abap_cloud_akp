@@ -1,0 +1,5 @@
+@EndUserText.label: 'Service Definition'
+define service ZSDAKP_DEMO_CONNECTION {
+  expose ZRAKP_DEMO_CONNECTION;
+  expose ZIAKP_DEMO_FLIGHT;
+}
